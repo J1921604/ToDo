@@ -1,28 +1,44 @@
-# [PROJECT NAME] Development Guidelines
+````markdown
+# [PROJECT NAME] 開発ガイドライン
 
-Auto-generated from all feature plans. Last updated: [DATE]
+すべての機能計画から自動生成。最終更新: [DATE]
 
-## Active Technologies
+## プロジェクト憲法
 
-[EXTRACTED FROM ALL PLAN.MD FILES]
+このプロジェクトは、`.specify/memory/constitution.md`で定義されたプロジェクト憲法に従います。
 
-## Project Structure
+**重要**: すべての開発作業は、以下の憲法原則を遵守する必要があります:
+- テスト駆動開発（必須・非交渉）
+- セキュリティファースト
+- パフォーマンス基準の定量化
+- ユーザー体験の一貫性
+- コード品質と可読性
+
+詳細は`.specify/memory/constitution.md`を参照してください。
+
+## アクティブな技術
+
+[すべてのplan.mdファイルから抽出]
+
+## プロジェクト構造
 
 ```text
-[ACTUAL STRUCTURE FROM PLANS]
+[計画からの実際の構造]
 ```
 
-## Commands
+## コマンド
 
-[ONLY COMMANDS FOR ACTIVE TECHNOLOGIES]
+[アクティブな技術のコマンドのみ]
 
-## Code Style
+## コードスタイル
 
-[LANGUAGE-SPECIFIC, ONLY FOR LANGUAGES IN USE]
+[使用中の言語に特化、使用中の言語のみ]
 
-## Recent Changes
+## 最近の変更
 
-[LAST 3 FEATURES AND WHAT THEY ADDED]
+[最新3機能とその追加内容]
 
-<!-- MANUAL ADDITIONS START -->
-<!-- MANUAL ADDITIONS END -->
+<!-- 手動追加開始 -->
+<!-- 手動追加終了 -->
+
+````
