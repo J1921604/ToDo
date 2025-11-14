@@ -530,7 +530,7 @@ SOFTWARE.
 
 ## 関連ドキュメント
 
-- **完全仕様書**: [仕様書.md](仕様書.md)
+- **完全仕様書**: [仕様書.md](AI_input/仕様書.md)
 - **デプロイガイド**: [AI_input/GitHubPagesデプロイ完全ガイド.md](AI_input/GitHubPagesデプロイ完全ガイド.md)
 - **基本ガイド**: [AI_input/BASIC_TODO_GUIDE_JP.md](AI_input/BASIC_TODO_GUIDE_JP.md)
 
