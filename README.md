@@ -1,309 +1,550 @@
-# 📝 Todo App - React + TypeScript
+# Todo App
 
-シンプルで強力な個人用タスク管理アプリケーション
+[![Deploy to GitHub Pages](https://github.com/J1921604/ToDo/actions/workflows/deploy.yml/badge.svg)](https://github.com/J1921604/ToDo/actions/workflows/deploy.yml)
+[![Tests](https://img.shields.io/badge/tests-106%2F106-success)](https://github.com/J1921604/ToDo)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9.3-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-blue)](https://react.dev/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-[![Deploy to GitHub Pages](https://github.com/J1921604/todo-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/J1921604/todo-app/actions/workflows/deploy.yml)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9.3-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-4.2.0-646CFF.svg)](https://vitejs.dev/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+React + TypeScript で構築された個人用タスク管理アプリケーション
 
-## 🌟 デモ
+**🌐 Live Demo**: https://j1921604.github.io/ToDo/
 
-**ライブデモ**: [https://j1921604.github.io/todo-app/](https://j1921604.github.io/todo-app/)
+---
 
-**スクリーンショット**:
+## 📋 目次
 
-![Todo App Screenshot](https://via.placeholder.com/800x450.png?text=Todo+App+Screenshot)
+- [概要](#概要)
+- [主要機能](#主要機能)
+- [技術スタック](#技術スタック)
+- [クイックスタート](#クイックスタート)
+- [開発環境セットアップ](#開発環境セットアップ)
+- [使い方](#使い方)
+- [プロジェクト構造](#プロジェクト構造)
+- [テスト](#テスト)
+- [デプロイ](#デプロイ)
+- [開発ガイド](#開発ガイド)
+- [トラブルシューティング](#トラブルシューティング)
+- [ライセンス](#ライセンス)
 
-**機能紹介動画**: 準備中
+---
 
-## ✨ 機能
+## 概要
 
-### 🎯 コア機能
+Todo App は、React + TypeScript で構築されたモダンなタスク管理アプリケーションです。
+個人用Todoページを動的に作成・管理でき、LocalStorageによる永続化により、ブラウザを閉じてもデータが保持されます。
 
-- ✅ **個人用ページ作成**: 各ユーザーが専用のTodoページを持てる
-- ✅ **タスク管理**: 追加、完了切り替え、削除
-- ✅ **フィルタリング**: すべて/進行中/完了済みで表示切り替え
-- ✅ **データ永続化**: LocalStorageで自動保存
-- ✅ **ページ管理**: ページの追加、編集、削除（データクリーンアップ込み）
-- ✅ **一括操作**: 完了済みタスクの一括削除
+### 🎯 プロジェクトの目的
 
-### 🚀 開発体験
+- React + TypeScript による SPA 開発の実践的な学習
+- Atomic Design パターンの理解と実装
+- テスト駆動開発 (TDD) の実践
+- CI/CD パイプライン（GitHub Actions）の構築
 
-- ⚡ **ワンコマンド起動**: `.\start.ps1` で自動セットアップ & 起動
-- 🔥 **Hot Module Replacement**: Viteによる爆速開発
-- 🧪 **テスト駆動開発**: 106テスト、100%カバレッジ
-- 📦 **GitHub Pagesデプロイ**: ワンコマンドで本番環境へ
+---
 
-### 🎨 UI/UX
+## 主要機能
 
-- 🌐 **日本語対応**: UI、ページ名、タスク名すべて日本語対応
-- 📱 **レスポンシブデザイン**: モバイル & デスクトップ対応
-- 🎯 **直感的なUI**: シンプルで使いやすいインターフェース
-- ♿ **アクセシビリティ**: ARIA属性による支援技術対応
+### ✅ コア機能
 
-## 🏗️ 技術スタック
+- **個人用ページ管理**
+  - ページの動的作成・編集・削除
+  - 日本語ページ名対応
+  - カスタムアイコン設定
 
-| カテゴリ | 技術 | バージョン |
-|---------|------|-----------|
-| フロントエンド | React | 18.2.0 |
-| 言語 | TypeScript | 4.9.3 |
-| ビルドツール | Vite | 4.2.0 |
-| ルーティング | React Router | 6.10.0 |
-| テストフレームワーク | Vitest | 0.34.0 |
-| テストライブラリ | Testing Library | 14.1.2 |
-| データ永続化 | LocalStorage API | - |
-| デプロイ | GitHub Pages | - |
+- **タスク管理**
+  - タスクの追加・削除
+  - 完了/未完了の切り替え
+  - 完了タスクの一括削除
+  - フィルタリング（すべて/進行中/完了済み）
 
-## 🚀 クイックスタート
+- **データ永続化**
+  - LocalStorageによる自動保存
+  - ページリロード後もデータ保持
+  - ページごとに独立したデータ管理
 
-### 前提条件
+- **ユーザビリティ**
+  - Enterキーでタスク追加
+  - レスポンシブUI
+  - 直感的な操作性
 
-- Node.js 16以上
-- npm 8以上
-- Git
-- Windows (PowerShellスクリプト使用)
+---
 
-### ワンコマンド起動（推奨）
+## 技術スタック
+
+### フロントエンド
+
+| 技術 | バージョン | 用途 |
+|------|-----------|------|
+| React | 18.2.0 | UIライブラリ |
+| TypeScript | 4.9.3 | 型安全性 |
+| React Router | 6.10.0 | ルーティング |
+| Vite | 4.2.0 | ビルドツール |
+
+### テスト
+
+| 技術 | バージョン | 用途 |
+|------|-----------|------|
+| Vitest | 0.34.0 | テストフレームワーク |
+| @testing-library/react | 14.1.2 | Reactテストユーティリティ |
+| happy-dom | 12.10.3 | DOM環境 |
+
+### CI/CD
+
+| 技術 | 用途 |
+|------|------|
+| GitHub Actions | 自動ビルド・デプロイ |
+| GitHub Pages | 静的サイトホスティング |
+
+---
+
+## クイックスタート
+
+### ワンコマンド起動（Windows）
 
 ```powershell
 .\start.ps1
 ```
 
-このコマンドで以下が自動実行されます：
-1. 依存関係のインストール（必要な場合）
-2. 開発サーバーの起動
-3. ブラウザで http://localhost:1234 を自動オープン
+自動的に以下が実行されます：
+1. 依存関係のインストール（未インストール時のみ）
+2. 開発サーバー起動（ポート1234）
+3. ブラウザ自動起動
 
-### 手動セットアップ
+### 手動起動
 
-```powershell
-# 1. リポジトリをクローン
-git clone https://github.com/J1921604/todo-app.git
-cd todo-app
-
-# 2. 依存関係をインストール
+```bash
+# 依存関係インストール
 npm install
 
-# 3. 開発サーバーを起動
+# 開発サーバー起動
 npm run dev
 ```
 
 ブラウザで http://localhost:1234 を開く
 
-## 📖 使い方
+---
 
-### 新規ページの追加
+## 開発環境セットアップ
 
-1. サイドバーの「➕ 新規ページ追加」をクリック
-2. 名前を入力（日本語可）
-3. 「追加」ボタンをクリック
-4. **重要**: 開発サーバーを再起動（Ctrl+C → `npm run dev`）
+### 前提条件
 
-### タスクの操作
+- Node.js 16.x 以上
+- npm 8.x 以上
+- Git
 
-- **追加**: テキストを入力して「➕ 追加」ボタンまたはEnterキー
-- **完了切り替え**: チェックボックスをクリック
-- **削除**: 🗑️ボタンをクリック
-- **フィルター**: 「すべて」「進行中」「完了済み」ボタンで表示切り替え
-- **一括削除**: 「完了タスクをクリア」ボタンで完了済みタスクを一括削除
+### インストール手順
 
-### ページの管理
+1. **リポジトリをクローン**
 
-- **編集**: サイドバーの✏️ボタンでページ名を編集
-- **削除**: サイドバーの🗑️ボタンでページとデータを完全削除
-
-## 🧪 テスト
-
-### すべてのテスト実行
-
-```powershell
-npm test
+```bash
+git clone https://github.com/J1921604/ToDo.git
+cd ToDo
 ```
 
-### テストカバレッジ
+2. **依存関係をインストール**
 
-```powershell
-npm run test:coverage
+```bash
+npm install
 ```
 
-**カバレッジ目標**: 100%（達成済み）
+3. **開発サーバーを起動**
 
-**テスト構成**:
-- 単体テスト: 18テスト（コンポーネント、ユーティリティ、型）
-- 統合テスト: 7テスト（タスク操作、永続化、フィルタリング）
-- エッジケーステスト: 含まれる
-
-## 📦 ビルド & デプロイ
-
-### ローカルビルド
-
-```powershell
-npm run build
+```bash
+npm run dev
 ```
 
-### プレビュー
+4. **ブラウザで確認**
 
-```powershell
-npm run preview
-```
-
-### GitHub Pagesへデプロイ
-
-#### 自動デプロイ（推奨）
-
-`deploy` ブランチにプッシュすると、GitHub Actionsが自動デプロイ:
-
-```powershell
-git checkout -b deploy
-git add .
-git commit -m "feat: Deploy to GitHub Pages"
-git push origin deploy
-```
-
-#### 手動デプロイ
-
-```powershell
-npm run deploy
-```
-
-詳細は [GitHub_Pages_デプロイ手順.md](./GitHub_Pages_デプロイ手順.md) を参照
-
-## 📁 プロジェクト構造
-
-```
-todo-app/
-├── src/
-│   ├── App.tsx                    # メインアプリケーション
-│   ├── main.tsx                   # エントリーポイント
-│   ├── components/
-│   │   ├── atoms/                 # Atomic Designコンポーネント
-│   │   │   ├── Button/
-│   │   │   └── Input/
-│   │   └── organisms/
-│   │       └── Sidebar.tsx        # サイドバーコンポーネント
-│   ├── pages/
-│   │   ├── HomePage.tsx           # ホームページ
-│   │   ├── DynamicTodoPage.tsx    # 動的Todoページ
-│   │   └── TestUserTodo.tsx       # テストユーザーページ
-│   ├── config/
-│   │   └── userPages.ts           # ページ設定
-│   ├── types/
-│   │   └── todo.ts                # TypeScript型定義
-│   └── utils/
-│       ├── localStorage.ts         # LocalStorage操作
-│       └── performance.ts          # パフォーマンス監視
-├── tests/
-│   ├── unit/                      # 単体テスト
-│   └── integration/               # 統合テスト
-├── .github/
-│   └── workflows/
-│       └── deploy.yml             # GitHub Actions
-├── specs/                         # 仕様書
-├── start.ps1                      # ワンコマンド起動スクリプト
-└── package.json
-```
-
-## 🎯 アーキテクチャ
-
-### データフロー
-
-```mermaid
-graph LR
-    A[User Input] --> B[React Component]
-    B --> C[State Update]
-    C --> D[LocalStorage]
-    D --> E[Data Persistence]
-    E --> F[Page Reload]
-    F --> D
-    D --> B
-```
-
-### コンポーネント設計
-
-- **Atomic Design原則**: atoms → organisms の階層構造
-- **Hooks中心**: useState、useEffectによる状態管理
-- **型安全性**: TypeScript strictモードで100%型付け
-
-## 🤝 貢献
-
-プルリクエストを歓迎します！大きな変更の場合は、まずissueを開いて変更内容を議論してください。
-
-### 開発ワークフロー
-
-1. このリポジトリをフォーク
-2. フィーチャーブランチを作成 (`git checkout -b feature/amazing-feature`)
-3. テストを書いて実行 (`npm test`)
-4. 変更をコミット (`git commit -m 'Add amazing feature'`)
-5. ブランチにプッシュ (`git push origin feature/amazing-feature`)
-6. プルリクエストを作成
-
-## 📄 ライセンス
-
-MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
-
-## 👥 作者
-
-J1921604
-
-## 🙏 謝辞
-
-- [React](https://react.dev/) - UIライブラリ
-- [Vite](https://vitejs.dev/) - 次世代フロントエンドツール
-- [Vitest](https://vitest.dev/) - 超高速テストランナー
-- [GitHub Pages](https://pages.github.com/) - 無料ホスティング
-
-## 📚 関連ドキュメント
-
-- [GitHub Pagesデプロイ手順](./GitHub%20Pagesデプロイ手順.md) - 自動・手動デプロイの完全ガイド
-- [完全仕様書](./AI_input/完全仕様書.md) - AI再現用の完全実装仕様
-- [機能仕様書](./specs/001-todo-app-spec/spec.md) - ユーザーストーリーと要件定義
-- [実装計画](./specs/feature/impl-001-todo-app/plan.md) - 開発計画とアーキテクチャ
-- [タスク一覧](./specs/feature/impl-001-todo-app/tasks.md) - 実装タスクの詳細
-- [データモデル](./specs/feature/impl-001-todo-app/data-model.md) - エンティティ定義
-- [クイックスタートガイド](./specs/feature/impl-001-todo-app/quickstart.md) - 環境構築手順
-
-## 📊 プロジェクトステータス
-
-### 実装完了度
-
-| カテゴリ | 進捗 | 状態 |
-|---------|------|------|
-| コア機能 | 100% | ✅ 完了 |
-| テストカバレッジ | 100% (106/106) | ✅ 完了 |
-| パフォーマンス最適化 | 100% | ✅ 完了 |
-| GitHub Actions CI/CD | 100% | ✅ 完了 |
-| ドキュメント | 100% | ✅ 完了 |
-
-### パフォーマンス指標
-
-- **初期ページ読み込み**: < 2秒 ✅
-- **タスク操作レスポンス**: < 100ms ✅
-- **テスト実行時間**: ~11秒 (106テスト) ✅
-- **ビルド時間**: ~1秒 ✅
-
-### 最適化実装
-
-- ✅ React.memo による不要な再レンダリング防止
-- ✅ useMemo によるフィルタリング処理の最適化
-- ✅ useCallback によるコールバック関数の最適化
-- ✅ Vite HMRによる開発体験の向上
-
-## 🐛 既知の問題
-
-- ページの追加/編集/削除後は開発サーバーの再起動が必要（ホットリロード未対応）
-- LocalStorageは5MB制限あり（ブラウザ依存）
-
-## 🔮 今後の予定
-
-- [ ] ページ設定のホットリロード対応
-- [ ] ドラッグ&ドロップでタスク並び替え
-- [ ] タスクの優先度設定
-- [ ] タスクの期限設定
-- [ ] データのエクスポート/インポート機能
-- [ ] ダークモード対応
+http://localhost:1234 にアクセス
 
 ---
 
-**⭐ このプロジェクトが役に立ったら、スターをお願いします！**
+## 使い方
+
+### 1. ホームページ
+
+アプリケーションを起動すると、ホームページが表示されます。
+
+- **概要**: プロジェクトの説明
+- **TestUserページへのリンク**: サンプルTodoページ
+
+### 2. Todoページ
+
+#### 2.1 タスク追加
+
+1. 入力フィールドにタスク内容を入力
+2. 「➕ 追加」ボタンをクリック（または Enterキー）
+3. タスクがリストに追加されます
+
+#### 2.2 タスク完了切り替え
+
+- チェックボックスをクリック
+- 完了タスクは取り消し線でグレー表示
+
+#### 2.3 タスク削除
+
+- 個別削除: 各タスクの 🗑️ ボタン
+- 一括削除: 「🗑️ 完了タスクをクリア」ボタン（完了タスクがある場合のみ表示）
+
+#### 2.4 フィルタリング
+
+- **すべて**: 全タスクを表示
+- **進行中**: 未完了タスクのみ
+- **完了済み**: 完了タスクのみ
+
+### 3. ページ管理（サイドバー）
+
+#### 3.1 新規ページ追加
+
+1. サイドバーの「➕ 新規ページ追加」ボタンをクリック
+2. 名前を入力（例: Tanaka, 田中）
+3. 「追加」ボタンをクリック
+4. **重要**: 開発サーバーを再起動
+
+```bash
+# Ctrl+C でサーバー停止
+npm run dev
+```
+
+#### 3.2 ページ編集
+
+1. サイドバーのページ横にある ✏️ ボタンをクリック
+2. 新しい名前を入力
+3. 「保存」ボタンをクリック
+4. 開発サーバーを再起動
+
+#### 3.3 ページ削除
+
+1. サイドバーのページ横にある 🗑️ ボタンをクリック
+2. 確認ダイアログで「OK」
+3. **注意**: ページのタスクデータも完全に削除されます
+4. 開発サーバーを再起動
+
+---
+
+## プロジェクト構造
+
+```
+ToDo/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                 # GitHub Actionsワークフロー
+├── src/
+│   ├── App.tsx                        # メインアプリケーション
+│   ├── main.tsx                       # エントリーポイント
+│   ├── index.css                      # グローバルスタイル
+│   ├── components/
+│   │   ├── atoms/                     # Atomic Design: 最小単位
+│   │   │   ├── Button/                # ボタンコンポーネント
+│   │   │   └── Input/                 # 入力コンポーネント
+│   │   └── organisms/                 # Atomic Design: 複合コンポーネント
+│   │       └── Sidebar.tsx            # サイドバー
+│   ├── config/
+│   │   └── userPages.ts               # ユーザーページ設定
+│   ├── pages/
+│   │   ├── HomePage.tsx               # ホームページ
+│   │   ├── TestUserTodo.tsx           # テストユーザーTodo
+│   │   └── DynamicTodoPage.tsx        # 動的Todoページ
+│   ├── types/
+│   │   └── todo.ts                    # 型定義
+│   └── utils/
+│       ├── localStorage.ts            # LocalStorage操作
+│       └── performance.ts             # パフォーマンス測定
+├── tests/
+│   ├── setup.ts                       # テストセットアップ
+│   ├── unit/                          # ユニットテスト (68個)
+│   └── integration/                   # 統合テスト (38個)
+├── package.json                       # NPM設定
+├── tsconfig.json                      # TypeScript設定
+├── vite.config.ts                     # Vite設定
+├── vitest.config.ts                   # Vitest設定
+├── start.ps1                          # ワンコマンド起動スクリプト
+└── README.md                          # 本ファイル
+```
+
+---
+
+## テスト
+
+### テスト実行
+
+```bash
+# 全テスト実行
+npm run test
+
+# ウォッチモード
+npm run test:watch
+
+# カバレッジレポート
+npm run test:coverage
+```
+
+### テスト構成
+
+- **合計**: 106テスト
+- **ユニットテスト**: 68個
+- **統合テスト**: 38個
+- **カバレッジ**: 100%
+
+### テストカテゴリ
+
+#### ユニットテスト
+
+- コンポーネントテスト
+- 型定義テスト
+- ユーティリティ関数テスト
+- 設定ファイルテスト
+
+#### 統合テスト
+
+- タスク操作フロー
+- データ永続化
+- フィルタリング
+- ページ管理
+- エッジケース
+
+---
+
+## デプロイ
+
+### GitHub Pages（自動デプロイ）
+
+#### 初回セットアップ
+
+1. **GitHub Pages設定を有効化**
+
+   https://github.com/J1921604/ToDo/settings/pages
+
+   - Source: **GitHub Actions** を選択
+   - Save
+
+2. **mainブランチにプッシュ**
+
+```bash
+git add .
+git commit -m "feat: 新機能追加"
+git push origin main
+```
+
+3. **デプロイ完了を確認**
+
+   約3〜5分後、以下のURLでアクセス可能:
+   
+   https://j1921604.github.io/ToDo/
+
+#### デプロイフロー
+
+```
+コード修正
+    ↓
+git push origin main
+    ↓
+GitHub Actions トリガー
+    ↓
+1. Type Check
+2. Build
+3. Upload Artifact
+4. Deploy to GitHub Pages
+    ↓
+本番サイト更新
+```
+
+### 手動デプロイ
+
+GitHub Actions タブから「Run workflow」を実行:
+
+https://github.com/J1921604/ToDo/actions
+
+---
+
+## 開発ガイド
+
+### 利用可能なコマンド
+
+```bash
+# 開発サーバー起動
+npm run dev
+
+# ビルド
+npm run build
+
+# プレビュー（ビルド後）
+npm run preview
+
+# テスト
+npm run test
+
+# テスト（ウォッチモード）
+npm run test:watch
+
+# カバレッジレポート
+npm run test:coverage
+
+# 型チェック
+npm run type-check
+```
+
+### コーディング規約
+
+#### TypeScript
+
+- **strict モード**: 有効
+- **明示的な型定義**: 必須
+- **暗黙的any**: 禁止
+
+#### React
+
+- **関数コンポーネント**: 推奨
+- **Hooks**: useState, useEffect, useMemo, useCallback
+- **Props型定義**: interface で明示
+
+#### ファイル命名
+
+- **コンポーネント**: PascalCase (例: `HomePage.tsx`)
+- **ユーティリティ**: camelCase (例: `localStorage.ts`)
+- **テスト**: `*.test.tsx` または `*.test.ts`
+
+### ブランチ戦略
+
+```
+main                  # 本番環境
+  └─ feature/*        # 機能開発ブランチ
+```
+
+### コミットメッセージ
+
+```
+feat: 新機能追加
+fix: バグ修正
+docs: ドキュメント更新
+style: コードフォーマット
+refactor: リファクタリング
+test: テスト追加・修正
+chore: ビルド・設定変更
+```
+
+---
+
+## トラブルシューティング
+
+### 問題1: 画面が真っ白
+
+**症状**: GitHub Pagesで空白ページ表示
+
+**原因**: basename設定の不一致
+
+**解決方法**:
+
+1. `vite.config.ts` と `src/main.tsx` の `basename` を確認
+2. リポジトリ名 `/ToDo/` と一致していることを確認
+
+詳細は [AI_input/GitHubPagesデプロイ完全ガイド.md](AI_input/GitHubPagesデプロイ完全ガイド.md) を参照
+
+### 問題2: TypeScriptエラー
+
+**症状**: `npm run type-check` でエラー
+
+**解決方法**:
+
+```bash
+# 型チェック実行
+npx tsc --noEmit
+
+# エラー箇所を確認・修正
+```
+
+### 問題3: ページ追加後に表示されない
+
+**症状**: サイドバーで新規ページ追加したが表示されない
+
+**原因**: 開発サーバー未再起動
+
+**解決方法**:
+
+```bash
+# Ctrl+C でサーバー停止
+npm run dev
+```
+
+### 問題4: LocalStorageが保存されない
+
+**症状**: タスク追加後、リロードでデータ消失
+
+**原因**: プライベートブラウジング、または LocalStorage無効
+
+**解決方法**:
+
+1. 通常モードでブラウザを開く
+2. DevTools Console で確認:
+   ```javascript
+   localStorage.setItem('test', 'value')
+   localStorage.getItem('test')
+   ```
+
+---
+
+## パフォーマンス
+
+### 要件
+
+- **初期ロード**: < 2秒
+- **CRUD操作**: < 100ms
+- **メモリ使用量**: < 50MB
+- **フィルタリング**: 1000タスクで < 200ms
+
+### 最適化
+
+- **React.memo**: 不要な再レンダリング防止
+- **useMemo**: フィルタリングのメモ化
+- **useCallback**: 関数のメモ化
+- **コード分割**: Vite自動最適化
+
+---
+
+## ライセンス
+
+MIT License
+
+Copyright (c) 2025 J1921604
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 関連ドキュメント
+
+- **完全仕様書**: [仕様書.md](仕様書.md)
+- **デプロイガイド**: [AI_input/GitHubPagesデプロイ完全ガイド.md](AI_input/GitHubPagesデプロイ完全ガイド.md)
+- **基本ガイド**: [AI_input/BASIC_TODO_GUIDE_JP.md](AI_input/BASIC_TODO_GUIDE_JP.md)
+
+---
+
+## リンク
+
+- **🌐 Live Demo**: https://j1921604.github.io/ToDo/
+- **📦 GitHub Repository**: https://github.com/J1921604/ToDo
+- **🔄 GitHub Actions**: https://github.com/J1921604/ToDo/actions
+- **⚙️ Pages Settings**: https://github.com/J1921604/ToDo/settings/pages
+
+---
+
+**作成者**: J1921604  
+**最終更新**: 2025年1月14日  
+**ステータス**: Production Ready ✅
