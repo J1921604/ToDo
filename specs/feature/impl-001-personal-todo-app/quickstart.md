@@ -785,5 +785,3 @@ flowchart TB
 - [ ] **憲法原則III**: パフォーマンス定量化
 - [ ] **憲法原則IV**: UX一貫性（Atomic Design）
 - [ ] **憲法原則V**: コード品質（strict mode）
-
----
