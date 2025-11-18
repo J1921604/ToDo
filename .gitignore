@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+# package-lock.json は GitHub Actions で必要なのでコミットする
+
+# Build output
+dist/
+build/
+
+# Test coverage
+coverage/
+*.test.tsx.snap
+
+# Environment
+.env
+.env.local
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
