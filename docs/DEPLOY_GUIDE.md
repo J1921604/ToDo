@@ -1,11 +1,11 @@
 # GitHub Pages デプロイ完全ガイド
 
-フォトアルバムオーガナイザーを GitHub Pages で本番運用するための完全なデプロイガイドです。
+タスク管理アプリケーションを GitHub Pages で本番運用するための完全なデプロイガイドです。
 
-**バージョン**: 1.0.0  
-**最終更新**: 2025-11-20  
-**ステータス**: ✅ 自動デプロイ設定済み  
-**テスト状況**: 77/77 PASS (100%)  
+**バージョン**: 1.0.0
+**最終更新**: 2025-11-20
+**ステータス**: ✅ 自動デプロイ設定済み
+**テスト状況**: 77/77 PASS (100%)
 **公開URL**: https://j1921604.github.io/ToDo/
 
 ---
@@ -34,22 +34,22 @@ flowchart TB
         C[ビルド確認<br/>npm run build]
         D[git push origin main]
     end
-    
+  
     subgraph GitHub["GitHubリポジトリ"]
         E[mainブランチ<br/>ソースコード]
         F[GitHub Actions<br/>ワークフロー]
     end
-    
+  
     subgraph Deploy["GitHub Pages"]
         H[静的ホスティング<br/>CDN配信]
         I[公開URL]
     end
-    
+  
     subgraph Users["エンドユーザー"]
         J[ブラウザアクセス]
         K[アプリケーション利用]
     end
-    
+  
     A --> B
     B --> C
     C --> D
@@ -61,7 +61,7 @@ flowchart TB
     H --> I
     I --> J
     J --> K
-    
+  
     style A fill:#e3f2fd
     style E fill:#fff3e0
     style F fill:#c8e6c9
@@ -71,15 +71,15 @@ flowchart TB
 
 ### デプロイフロー概要
 
-| ステップ | 実行場所 | 処理内容 | 所要時間 |
-|---------|---------|---------|----------|
-| 1. コミット | ローカル | `git push origin main` | - |
-| 2. トリガー | GitHub | GitHub Actions 起動 | 即時 |
-| 3. ビルド | CI/CD | `npm ci && npm run build` | 30-60秒 |
-| 4. アップロード | CI/CD | dist/ をアーティファクトとしてアップロード | 5-10秒 |
-| 5. デプロイ | CI/CD | GitHub Pages へデプロイ | 10-20秒 |
-| 6. 配信 | GitHub Pages | CDN反映 | 1-2分 |
-| **合計** | - | - | **2-4分** |
+| ステップ        | 実行場所     | 処理内容                                   | 所要時間        |
+| --------------- | ------------ | ------------------------------------------ | --------------- |
+| 1. コミット     | ローカル     | `git push origin main`                   | -               |
+| 2. トリガー     | GitHub       | GitHub Actions 起動                        | 即時            |
+| 3. ビルド       | CI/CD        | `npm ci && npm run build`                | 30-60秒         |
+| 4. アップロード | CI/CD        | dist/ をアーティファクトとしてアップロード | 5-10秒          |
+| 5. デプロイ     | CI/CD        | GitHub Pages へデプロイ                    | 10-20秒         |
+| 6. 配信         | GitHub Pages | CDN反映                                    | 1-2分           |
+| **合計**  | -            | -                                          | **2-4分** |
 
 ---
 
@@ -121,6 +121,7 @@ npm run preview
 #### ステップ3: 動作確認
 
 ブラウザで以下を確認:
+
 - ✅ アップロードボタンが表示される
 - ✅ 写真ファイル選択ダイアログが開く
 - ✅ レスポンシブデザインが適用されている
@@ -191,30 +192,30 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          
+        
       - name: Install dependencies
         run: npm ci
-        
+      
       - name: Build project
         run: npm run build
-        
+      
       - name: List dist contents
         run: ls -la dist/
-        
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-          
+        
   deploy:
     environment:
       name: github-pages
@@ -258,6 +259,7 @@ permissions:
 ### デプロイトリガー
 
 以下のブランチへのプッシュで自動デプロイ:
+
 - `main`
 
 ### デプロイ完了確認
@@ -271,9 +273,9 @@ flowchart LR
     C -->|✅ success| D[デプロイ完了]
     C -->|❌ failure| E[ログ確認]
     C -->|🟡 in progress| F[待機]
-    
+  
     E --> G[トラブルシューティング]
-    
+  
     style A fill:#e3f2fd
     style D fill:#c8e6c9
     style E fill:#ffcdd2
@@ -293,11 +295,11 @@ flowchart LR
 
 ### 設定内容
 
-| 設定項目 | 値 | 説明 |
-|---------|-----|------|
-| Source | GitHub Actions | カスタムワークフローを使用 |
-| Branch | 不要 | ワークフローが自動管理 |
-| Folder | 不要 | ワークフローが自動管理 |
+| 設定項目 | 値             | 説明                       |
+| -------- | -------------- | -------------------------- |
+| Source   | GitHub Actions | カスタムワークフローを使用 |
+| Branch   | 不要           | ワークフローが自動管理     |
+| Folder   | 不要           | ワークフローが自動管理     |
 
 **重要**: 本プロジェクトではGitHub Actions方式を採用しています。ビルドプロセスの完全制御、依存関係の自動管理、テスト統合が可能です。
 
@@ -308,6 +310,7 @@ flowchart LR
 ### 問題1: "Get Pages site failed" エラー
 
 **エラーメッセージ**:
+
 ```
 Error: Get Pages site failed. Please verify that the repository has Pages enabled 
 and configured to build using GitHub Actions
@@ -323,6 +326,7 @@ and configured to build using GitHub Actions
 4. ワークフローを再実行
 
 **手順**:
+
 ```
 Settings → Pages → Source: GitHub Actions を選択 → 保存
 ```
@@ -336,16 +340,17 @@ Settings → Pages → Source: GitHub Actions を選択 → 保存
 **確認項目**:
 
 1. **Settings → Pages で「GitHub Actions」が選択されているか確認**
+
    ```
    Settings → Pages → Source: GitHub Actions
    ```
-
 2. **ワークフローログを確認**
+
    ```
    Actions タブ → 失敗したワークフロー → ログ確認
    ```
-
 3. **permissions設定確認**
+
    ```yaml
    permissions:
      contents: read
@@ -413,6 +418,7 @@ export default defineConfig({
 ```
 
 **修正が必要な場合**:
+
 ```powershell
 # vite.config.js を編集
 # base: '/間違った名前/' を base: '/正しいリポジトリ名/' に変更
@@ -504,7 +510,7 @@ flowchart TB
     subgraph Trigger ["トリガー"]
         A1["git push main"]
     end
-    
+  
     subgraph CI ["Continuous Integration"]
         B1["Checkout<br/>actions/checkout@v4"]
         B2["Setup Node.js 20<br/>actions/setup-node@v4"]
@@ -512,22 +518,22 @@ flowchart TB
         B4["Build Project<br/>npm run build"]
         B5["Verify Build<br/>ls -la dist/"]
     end
-    
+  
     subgraph Artifact ["アーティファクト管理"]
         C1["Setup Pages<br/>actions/configure-pages@v4"]
         C2["Upload Artifact<br/>actions/upload-pages-artifact@v3"]
     end
-    
+  
     subgraph CD ["Continuous Deployment"]
         D1["Deploy Pages<br/>actions/deploy-pages@v4"]
         D2["GitHub Pages CDN Sync"]
     end
-    
+  
     subgraph Verify ["検証"]
         E1["Access Public URL"]
         E2["Verify App Running"]
     end
-    
+  
     A1 --> B1
     B1 --> B2
     B2 --> B3
@@ -539,7 +545,7 @@ flowchart TB
     D1 --> D2
     D2 --> E1
     E1 --> E2
-    
+  
     style A1 fill:#e3f2fd
     style B3 fill:#fff3e0
     style B4 fill:#c8e6c9
@@ -550,25 +556,25 @@ flowchart TB
 
 ### ビルドステップ詳細
 
-| ステップ | 処理内容 | 成果物 | 失敗時の対応 |
-|---------|---------|--------|-------------|
-| 1. Checkout | ソースコードを取得 | - | リポジトリアクセス権確認 |
-| 2. Setup Node | Node.js 20.x インストール | node, npm | バージョン確認 |
-| 3. npm ci | 依存関係インストール | node_modules/ | package-lock.json 再生成 |
-| 4. npm run build | Viteビルド実行 | dist/ | ローカルでビルド確認 |
-| 5. Setup Pages | GitHub Pages設定 | - | 権限確認 |
-| 6. Upload | アーティファクトアップロード | - | サイズ確認（最大10GB） |
-| 7. Deploy | GitHub Pagesへデプロイ | - | 権限確認 |
+| ステップ         | 処理内容                     | 成果物        | 失敗時の対応             |
+| ---------------- | ---------------------------- | ------------- | ------------------------ |
+| 1. Checkout      | ソースコードを取得           | -             | リポジトリアクセス権確認 |
+| 2. Setup Node    | Node.js 20.x インストール    | node, npm     | バージョン確認           |
+| 3. npm ci        | 依存関係インストール         | node_modules/ | package-lock.json 再生成 |
+| 4. npm run build | Viteビルド実行               | dist/         | ローカルでビルド確認     |
+| 5. Setup Pages   | GitHub Pages設定             | -             | 権限確認                 |
+| 6. Upload        | アーティファクトアップロード | -             | サイズ確認（最大10GB）   |
+| 7. Deploy        | GitHub Pagesへデプロイ       | -             | 権限確認                 |
 
 ### パフォーマンス指標
 
-| 項目 | 目標 | 実績 |
-|------|------|------|
-| ビルド時間 | < 60秒 | 30-40秒 ✅ |
-| アップロード時間 | < 20秒 | 5-10秒 ✅ |
-| デプロイ時間 | < 30秒 | 10-20秒 ✅ |
-| CDN反映 | < 2分 | 1-2分 ✅ |
-| 総所要時間 | < 5分 | 2-4分 ✅ |
+| 項目             | 目標   | 実績       |
+| ---------------- | ------ | ---------- |
+| ビルド時間       | < 60秒 | 30-40秒 ✅ |
+| アップロード時間 | < 20秒 | 5-10秒 ✅  |
+| デプロイ時間     | < 30秒 | 10-20秒 ✅ |
+| CDN反映          | < 2分  | 1-2分 ✅   |
+| 総所要時間       | < 5分  | 2-4分 ✅   |
 
 ### アーティファクト管理
 
@@ -578,7 +584,7 @@ flowchart LR
     B --> C[dist/<br/>一時ビルド成果物]
     C --> D[Pages Artifact<br/>アップロード]
     D --> E[GitHub Pages<br/>公開配信]
-    
+  
     style A fill:#e3f2fd
     style C fill:#fff9c4
     style D fill:#f8bbd0
