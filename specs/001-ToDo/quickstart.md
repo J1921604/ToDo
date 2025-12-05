@@ -651,9 +651,9 @@ flowchart LR
 ### ドキュメント
 
 - [仕様書](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/spec.md)
-- [実装計画](https://github.com/J1921604/ToDo/blob/main/specs/feature/impl-001-ToDo/plan.md)
-- [技術調査](https://github.com/J1921604/ToDo/blob/main/specs/feature/impl-001-ToDo/research.md)
-- [データモデル](https://github.com/J1921604/ToDo/blob/main/specs/feature/impl-001-ToDo/data-model.md)
+- [実装計画](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/plan.md)
+- [技術調査](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/research.md)
+- [データモデル](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/data-model.md)
 
 ### 公式ドキュメント
 

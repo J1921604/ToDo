@@ -1,13 +1,65 @@
 # タスク: 個人用Todoアプリケーション
 
-**入力**: `/specs/001-ToDo/`のデザインドキュメント  
-**前提条件**: plan.md（必須）、spec.md（ユーザーストーリー用に必須）、research.md、data-model.md、quickstart.md  
-**ブランチ**: `feature/impl-001-ToDo`  
+**入力**: `/specs/001-ToDo/`のデザインドキュメント
+**前提条件**: plan.md（必須）、spec.md（ユーザーストーリー用に必須）、research.md、data-model.md、quickstart.md
+**ブランチ**: `feature/impl-001-ToDo`
 **作成日**: 2025-11-20
+**更新日**: 2025-11-20
 
 **テスト**: このプロジェクトはTDD（テスト駆動開発）を採用しており、すべての実装タスクの前にテストタスクを実施します。106テスト、100%カバレッジを目標としています。
 
 **構成**: タスクはユーザーストーリーごとにグループ化され、各ストーリーの独立した実装とテストを可能にします。
+
+---
+
+## 実装スケジュール
+
+```mermaid
+gantt
+    title 実装スケジュール（2025年12月15日開始）
+    dateFormat YYYY-MM-DD
+    axisFormat %m/%d
+    excludes weekends 2025-12-27 2025-12-28 2025-12-29 2025-12-30 2025-12-31 2026-01-01 2026-01-02 2026-01-03 2026-01-04
+  
+    section Phase 1: セットアップ
+    T001-T011 プロジェクト初期化           :p1_1, 2025-12-15, 1d
+  
+    section Phase 2: 基盤
+    T012-T025 コアデータ型定義             :p2_1, after p1_1, 2d
+  
+    section Phase 3: US1 開発環境
+    T026-T030 ワンコマンド起動実装         :p3_1, after p2_1, 1d
+  
+    section Phase 4: US2 ページ管理
+    T031-T048 個人ページ作成・管理         :p4_1, after p3_1, 3d
+  
+    section Phase 5: US3 タスクCRUD
+    T049-T070 タスク操作とフィルタリング   :p5_1, after p4_1, 4d
+  
+    section Phase 6: US4 デプロイ
+    T071-T082 GitHub Pagesデプロイ         :p6_1, after p5_1, 2d
+  
+    section Phase 7: 品質向上
+    T083-T100 ドキュメント・最終検証       :p7_1, after p6_1, 3d
+```
+
+**スケジュール説明**:
+
+- 開始日: 2025年12月15日（月）
+- 土日年末年始: 自動除外（excludes weekends）
+- 総作業日数: 15営業日
+
+**フェーズ別所要日数**:
+
+1. Phase 1（セットアップ）: 1日
+2. Phase 2（基盤）: 2日
+3. Phase 3（US1）: 1日
+4. Phase 4（US2）: 3日
+5. Phase 5（US3）: 4日
+6. Phase 6（US4）: 2日
+7. Phase 7（品質向上）: 3日
+
+---
 
 ## 形式: `- [ ] [ID] [P?] [Story?] 説明 in ファイルパス`
 
@@ -127,13 +179,14 @@ ToDo/
 
 ## フェーズ3: ユーザーストーリー1 - ワンコマンド開発環境起動 (優先度: P1) 🎯 MVP
 
-**目標**: 開発者が`.\start.ps1`を実行するだけで、npm依存関係の自動インストール、開発サーバーのバックグラウンド起動、ブラウザの自動オープンが実行される
+**目標**: 開発者が `.\start.ps1`を実行するだけで、npm依存関係の自動インストール、開発サーバーのバックグラウンド起動、ブラウザの自動オープンが実行される
 
-**独立テスト**: 
+**独立テスト**:
+
 1. `.\start.ps1`を実行
 2. node_modules未存在時にnpm installが実行されることを確認
 3. 開発サーバーがポート1234で起動することを確認
-4. ブラウザで`http://localhost:1234`が自動的に開くことを確認
+4. ブラウザで `http://localhost:1234`が自動的に開くことを確認
 5. PowerShellウィンドウが5秒後に自動終了し、サーバーは継続実行することを確認
 
 ### ユーザーストーリー1のテスト（TDD）
@@ -158,6 +211,7 @@ ToDo/
 **目標**: ユーザーがUIから個人用Todoページを追加・編集・削除でき、各ページが独立したタスクデータを持つ
 
 **独立テスト**:
+
 1. サイドバーの「➕ 新規ページ追加」ボタンをクリック
 2. ページ名（例: 「田中」）を入力して追加
 3. サーバーを再起動
@@ -169,8 +223,8 @@ ToDo/
 
 > **注記: これらのテストを最初に記述し、実装前に失敗することを確認してください**
 
-- [ ] T031 [P] [US2] Sidebarコンポーネントのテスト in tests/unit/components/Sidebar.test.tsx
-- [ ] T032 [P] [US2] 個人ページセットアップの統合テスト in tests/integration/personal-page-setup.test.tsx
+- [X] T031 [P] [US2] Sidebarコンポーネントのテスト in tests/unit/components/Sidebar.test.tsx
+- [X] T032 [P] [US2] 個人ページセットアップの統合テスト in tests/integration/personal-page-setup.test.tsx
 
 ### ユーザーストーリー2の実装
 
@@ -201,9 +255,9 @@ ToDo/
 
 #### ページコンポーネントのテスト
 
-- [ ] T046 [P] [US2] HomePageのテスト in tests/unit/components/HomePage.test.tsx
-- [ ] T047 [P] [US2] DynamicTodoPageのテスト in tests/unit/components/DynamicTodoPage.test.tsx
-- [ ] T048 [P] [US2] Appコンポーネントのテスト in tests/unit/components/App.test.tsx
+- [X] T046 [P] [US2] HomePageのテスト in tests/unit/components/HomePage.test.tsx
+- [X] T047 [P] [US2] DynamicTodoPageのテスト in tests/unit/components/DynamicTodoPage.test.tsx
+- [X] T048 [P] [US2] Appコンポーネントのテスト in tests/unit/components/App.test.tsx
 
 **チェックポイント**: この時点で、ユーザーストーリー1とユーザーストーリー2が両方とも独立して機能する
 
@@ -214,6 +268,7 @@ ToDo/
 **目標**: ユーザーが各個人用ページでタスクの追加、完了切り替え、個別削除、一括削除、フィルタリングを実行でき、すべての操作がLocalStorageに自動保存される
 
 **独立テスト**:
+
 1. タスクを入力してEnterキーまたは「➕ 追加」ボタンでタスクが追加されることを確認
 2. チェックボックスをクリックして完了/未完了が切り替わることを確認
 3. 🗑️ボタンでタスクが削除されることを確認
@@ -225,12 +280,12 @@ ToDo/
 
 > **注記: これらのテストを最初に記述し、実装前に失敗することを確認してください**
 
-- [ ] T049 [P] [US3] タスク操作の統合テスト（追加、完了切り替え） in tests/integration/task-operations.test.tsx
-- [ ] T050 [P] [US3] タスクフィルタリングの統合テスト in tests/integration/task-filtering.test.tsx
-- [ ] T051 [P] [US3] タスク削除の統合テスト in tests/integration/task-deletion.test.tsx
-- [ ] T052 [P] [US3] 一括削除の統合テスト in tests/integration/bulk-deletion.test.tsx
-- [ ] T053 [P] [US3] データ永続化の統合テスト in tests/integration/data-persistence.test.tsx
-- [ ] T054 [P] [US3] エッジケースの統合テスト in tests/integration/edge-cases.test.tsx
+- [X] T049 [P] [US3] タスク操作の統合テスト（追加、完了切り替え） in tests/integration/task-operations.test.tsx
+- [X] T050 [P] [US3] タスクフィルタリングの統合テスト in tests/integration/task-filtering.test.tsx
+- [X] T051 [P] [US3] タスク削除の統合テスト in tests/integration/task-deletion.test.tsx
+- [X] T052 [P] [US3] 一括削除の統合テスト in tests/integration/bulk-deletion.test.tsx
+- [X] T053 [P] [US3] データ永続化の統合テスト in tests/integration/data-persistence.test.tsx
+- [X] T054 [P] [US3] エッジケースの統合テスト in tests/integration/edge-cases.test.tsx
 
 ### ユーザーストーリー3の実装
 
@@ -242,8 +297,8 @@ ToDo/
 
 #### Moleculesコンポーネントのテスト
 
-- [ ] T058 [P] [US3] TaskInputのテスト in tests/unit/components/TaskInput.test.tsx
-- [ ] T059 [P] [US3] TaskItemのテスト in tests/unit/components/TaskItem.test.tsx
+- [X] T058 [P] [US3] TaskInputのテスト in tests/unit/components/TaskInput.test.tsx
+- [X] T059 [P] [US3] TaskItemのテスト in tests/unit/components/TaskItem.test.tsx
 - [ ] T060 [P] [US3] FilterButtonのテスト in tests/unit/components/FilterButton.test.tsx
 
 #### Organismsコンポーネント（タスクリストとフィルターバー）
@@ -258,15 +313,15 @@ ToDo/
 
 #### DynamicTodoPageへの統合
 
-- [ ] T065 [US3] DynamicTodoPageでTaskInput、TaskList、FilterBarを統合 in src/pages/DynamicTodoPage.tsx
-- [ ] T066 [US3] DynamicTodoPageでLocalStorageユーティリティを使用してデータ永続化を実装 in src/pages/DynamicTodoPage.tsx
-- [ ] T067 [US3] DynamicTodoPageでReact Hooks（useState、useEffect）を使用して状態管理を実装 in src/pages/DynamicTodoPage.tsx
+- [X] T065 [US3] DynamicTodoPageでTaskInput、TaskList、FilterBarを統合 in src/pages/DynamicTodoPage.tsx
+- [X] T066 [US3] DynamicTodoPageでLocalStorageユーティリティを使用してデータ永続化を実装 in src/pages/DynamicTodoPage.tsx
+- [X] T067 [US3] DynamicTodoPageでReact Hooks（useState、useEffect）を使用して状態管理を実装 in src/pages/DynamicTodoPage.tsx
 
 #### パフォーマンス最適化
 
-- [ ] T068 [P] [US3] React.memoでTaskItemコンポーネントを最適化 in src/components/molecules/TaskItem.tsx
-- [ ] T069 [P] [US3] useMemoでフィルタリングロジックを最適化 in src/pages/DynamicTodoPage.tsx
-- [ ] T070 [P] [US3] useCallbackでイベントハンドラーを最適化 in src/pages/DynamicTodoPage.tsx
+- [X] T068 [P] [US3] React.memoでTaskItemコンポーネントを最適化 in src/components/molecules/TaskItem.tsx
+- [X] T069 [P] [US3] useMemoでフィルタリングロジックを最適化 in src/pages/DynamicTodoPage.tsx
+- [X] T070 [P] [US3] useCallbackでイベントハンドラーを最適化 in src/pages/DynamicTodoPage.tsx
 
 **チェックポイント**: すべてのコアユーザーストーリー（US1、US2、US3）が独立して機能する
 
@@ -277,6 +332,7 @@ ToDo/
 **目標**: 開発者がビルドコマンドを実行し、生成された静的ファイルをGitHub Pagesにデプロイして公開できる
 
 **独立テスト**:
+
 1. `npm run build`を実行し、distフォルダが生成されることを確認
 2. `npm run preview`でビルド結果をローカルプレビュー
 3. GitHub Actionsワークフローが正常に動作し、GitHub Pagesにデプロイされることを確認
@@ -367,7 +423,7 @@ flowchart TB
     US3[フェーズ5: US3 - タスクCRUD]
     US4[フェーズ6: US4 - デプロイ]
     POLISH[フェーズ7: 品質向上]
-    
+  
     SETUP --> FOUND
     FOUND --> US1
     FOUND --> US2
@@ -376,7 +432,7 @@ flowchart TB
     US2 --> US4
     US3 --> US4
     US4 --> POLISH
-    
+  
     style SETUP fill:#e1f5ff
     style FOUND fill:#fff3e1
     style US1 fill:#e1ffe1
@@ -387,6 +443,7 @@ flowchart TB
 ```
 
 **依存関係の説明**:
+
 - **セットアップ（フェーズ1）**: 依存関係なし - 即座に開始可能
 - **基盤（フェーズ2）**: セットアップ完了に依存 - すべてのユーザーストーリーをブロック
 - **ユーザーストーリー（フェーズ3-5）**: 基盤完了に依存
@@ -404,14 +461,14 @@ flowchart LR
     US2[US2: ページ管理]
     US3[US3: タスクCRUD]
     US4[US4: デプロイ]
-    
+  
     FOUND --> US1
     FOUND --> US2
     FOUND --> US3
     US1 --> US4
     US2 --> US4
     US3 --> US4
-    
+  
     style FOUND fill:#fff3e1
     style US1 fill:#e1ffe1
     style US2 fill:#ffe1e1
@@ -427,6 +484,7 @@ flowchart LR
 ### 各ユーザーストーリー内の順序
 
 **ユーザーストーリー内のワークフロー**:
+
 1. テスト作成（TDD） - 実装前に失敗することを確認
 2. Atomsコンポーネント実装（並列実行可能）
 3. Moleculesコンポーネント実装（Atoms完了後）
@@ -449,7 +507,7 @@ flowchart TB
         T009[T009: templates/ディレクトリ]
         T010[T010: tests/ディレクトリ]
     end
-    
+  
     subgraph "フェーズ2: 基盤（並列実行）"
         T012[T012: TodoItem型]
         T013[T013: UserPage型]
@@ -461,7 +519,7 @@ flowchart TB
         T020[T020: CSS変数]
         T021[T021: リセットCSS]
     end
-    
+  
     subgraph "US2: Atoms（並列実行）"
         T033[T033: Button/index.tsx]
         T034[T034: Button/Small.tsx]
@@ -469,13 +527,13 @@ flowchart TB
         T036[T036: Input/index.tsx]
         T037[T037: Input/Text.tsx]
     end
-    
+  
     subgraph "US3: Molecules（並列実行）"
         T055[T055: TaskInput]
         T056[T056: TaskItem]
         T057[T057: FilterButton]
     end
-    
+  
     style T003 fill:#e1f5ff
     style T012 fill:#fff3e1
     style T033 fill:#ffe1e1
@@ -524,7 +582,7 @@ flowchart TB
     TEST1 -->|No| US1
     TEST1 -->|Yes| VALIDATE[MVP検証]
     VALIDATE --> DEMO[デモ/デプロイ]
-    
+  
     style START fill:#e1f5ff
     style PHASE1 fill:#fff3e1
     style PHASE2 fill:#ffe1e1
@@ -555,7 +613,7 @@ flowchart LR
     TEST3 -->|成功| DEPLOY3[デプロイ/デモ]
     DEPLOY3 --> US4[US4実装]
     US4 --> FINAL[最終デプロイ]
-    
+  
     style SETUP fill:#e1f5ff
     style FOUND fill:#fff3e1
     style US1 fill:#e1ffe1
@@ -580,38 +638,38 @@ flowchart TB
         SETUP[セットアップ]
         FOUND[基盤]
     end
-    
+  
     FOUND --> SPLIT{基盤完了}
-    
+  
     subgraph "開発者A"
         US1A[US1実装]
         TEST1A[US1テスト]
     end
-    
+  
     subgraph "開発者B"
         US2B[US2実装]
         TEST2B[US2テスト]
     end
-    
+  
     subgraph "開発者C"
         US3C[US3実装]
         TEST3C[US3テスト]
     end
-    
+  
     SPLIT --> US1A
     SPLIT --> US2B
     SPLIT --> US3C
-    
+  
     US1A --> TEST1A
     US2B --> TEST2B
     US3C --> TEST3C
-    
+  
     TEST1A --> INTEGRATE[統合]
     TEST2B --> INTEGRATE
     TEST3C --> INTEGRATE
-    
+  
     INTEGRATE --> US4[US4: デプロイ]
-    
+  
     style SETUP fill:#e1f5ff
     style FOUND fill:#fff3e1
     style US1A fill:#e1ffe1
@@ -651,7 +709,7 @@ flowchart TB
     CHECK4 -->|No| FIX4[Lint修正]
     FIX4 --> CHECK4
     CHECK4 -->|Yes| READY[ビルド準備完了]
-    
+  
     style START fill:#e1f5ff
     style READY fill:#00ff00,color:#000
     style FIX1 fill:#ff6666,color:#fff
@@ -661,6 +719,7 @@ flowchart TB
 ```
 
 **ビルド前に確認**:
+
 - [ ] すべてのテストが成功（`npm run test`）
 - [ ] テストカバレッジ100%（`npm run test:coverage`）
 - [ ] TypeScript型エラーなし（`npm run type-check`）
@@ -677,7 +736,7 @@ flowchart TB
     CHECK_DIST -->|なし| ERROR1[ビルドエラー]
     ERROR1 --> BUILD
     CHECK_DIST -->|あり| PREVIEW[npm run preview実行]
-    
+  
     PREVIEW --> OPEN[ブラウザで確認]
     OPEN --> FUNC1{ホーム表示?}
     FUNC1 -->|No| DEBUG1[デバッグ]
@@ -694,7 +753,7 @@ flowchart TB
     FUNC4 -->|Yes| FUNC5{データ永続化?}
     FUNC5 -->|No| DEBUG5[デバッグ]
     DEBUG5 --> BUILD
-    
+  
     FUNC5 -->|Yes| PERF[パフォーマンス測定]
     PERF --> PR1{PR-001達成?}
     PR1 -->|No| TUNE1[最適化]
@@ -706,7 +765,7 @@ flowchart TB
     PR3 -->|No| TUNE3[最適化]
     TUNE3 --> BUILD
     PR3 -->|Yes| COMPLETE[ビルド検証完了]
-    
+  
     style BUILD fill:#e1f5ff
     style PREVIEW fill:#61DAFB,color:#000
     style PERF fill:#ffcc66
@@ -717,19 +776,22 @@ flowchart TB
 **詳細ステップ**:
 
 1. **ビルド実行**:
+
    ```powershell
    npm run build
    ```
+
    - 1秒以内に完了することを確認（PR-005）
    - dist/フォルダが生成されることを確認
-
 2. **プレビュー起動**:
+
    ```powershell
    npm run preview
    ```
-   - ローカルサーバーが起動することを確認
 
+   - ローカルサーバーが起動することを確認
 3. **機能検証**:
+
    - [ ] ホームページが表示される
    - [ ] サイドバーからページ遷移が動作する
    - [ ] タスク追加が動作する
@@ -737,16 +799,17 @@ flowchart TB
    - [ ] タスク削除が動作する
    - [ ] フィルター切り替えが動作する
    - [ ] ページリロード後にデータが保持される
-
 4. **パフォーマンス測定**:
+
    - [ ] PR-001: 初期ロード2秒以内（Chrome DevTools Performance タブ）
    - [ ] PR-002: タスク操作UI反映100ms以内
    - [ ] PR-003: フィルター切り替え50ms以内
-
 5. **Lighthouse監査**:
+
    ```powershell
    # Chrome DevToolsでLighthouseを実行
    ```
+
    - Performance: 90+
    - Accessibility: 90+
    - Best Practices: 90+
@@ -771,7 +834,7 @@ flowchart TB
     PROD1 -->|Yes| PROD2{全機能動作?}
     PROD2 -->|No| DEBUG
     PROD2 -->|Yes| SUCCESS[デプロイ成功]
-    
+  
     style MERGE fill:#e1f5ff
     style GHA fill:#2088FF,color:#fff
     style SUCCESS fill:#00ff00,color:#000
@@ -781,14 +844,15 @@ flowchart TB
 **詳細ステップ**:
 
 1. **GitHub Actions確認**:
+
    - リポジトリの「Actions」タブでワークフロー実行状況を確認
    - ビルドとデプロイが成功していることを確認
-
 2. **公開URL確認**:
+
    - `https://<username>.github.io/<repository>/`にアクセス
    - アプリケーションが正常に表示されることを確認
-
 3. **本番環境での機能検証**:
+
    - [ ] すべての機能がローカルと同様に動作する
    - [ ] ルーティングが正常に動作する
    - [ ] LocalStorageが正常に動作する
@@ -801,6 +865,7 @@ flowchart TB
 ### PR-001: 初期ロード2秒以内
 
 **測定手順**:
+
 1. Chrome DevToolsを開く（F12）
 2. 「Performance」タブを選択
 3. 「Record」ボタンをクリック
@@ -813,6 +878,7 @@ flowchart TB
 ### PR-002: タスク操作UI反映100ms以内
 
 **測定手順**:
+
 1. Chrome DevToolsの「Performance」タブで「Record」開始
 2. タスクを追加（Enterキー押下）
 3. 「Stop」ボタンをクリック
@@ -823,6 +889,7 @@ flowchart TB
 ### PR-003: フィルター切り替え50ms以内
 
 **測定手順**:
+
 1. Chrome DevToolsの「Performance」タブで「Record」開始
 2. フィルターボタンをクリック
 3. 「Stop」ボタンをクリック
@@ -833,7 +900,8 @@ flowchart TB
 ### PR-004: 開発サーバー起動30秒以内
 
 **測定手順**:
-1. PowerShellで`.\start.ps1`を実行
+
+1. PowerShellで `.\start.ps1`を実行
 2. ブラウザが開くまでの時間を計測
 
 **合格基準**: 30秒以内
@@ -841,7 +909,8 @@ flowchart TB
 ### PR-005: ビルド時間1秒以内
 
 **測定手順**:
-1. PowerShellで`npm run build`を実行
+
+1. PowerShellで `npm run build`を実行
 2. 開始から完了までの時間を確認
 
 **合格基準**: 1秒以内
@@ -864,17 +933,18 @@ flowchart TB
 
 **合計タスク数**: 100タスク
 
-| フェーズ | タスク数 | 状態 |
-|---------|---------|------|
-| フェーズ1: セットアップ | 11 | 未着手 |
-| フェーズ2: 基盤 | 14 | 未着手 |
-| フェーズ3: US1 - 開発環境起動 | 5 | 未着手 |
-| フェーズ4: US2 - ページ管理 | 18 | 未着手 |
-| フェーズ5: US3 - タスクCRUD | 22 | 未着手 |
-| フェーズ6: US4 - デプロイ | 12 | 未着手 |
-| フェーズ7: 品質向上 | 18 | 未着手 |
+| フェーズ                      | タスク数 | 状態   |
+| ----------------------------- | -------- | ------ |
+| フェーズ1: セットアップ       | 11       | 未着手 |
+| フェーズ2: 基盤               | 14       | 未着手 |
+| フェーズ3: US1 - 開発環境起動 | 5        | 未着手 |
+| フェーズ4: US2 - ページ管理   | 18       | 未着手 |
+| フェーズ5: US3 - タスクCRUD   | 22       | 未着手 |
+| フェーズ6: US4 - デプロイ     | 12       | 未着手 |
+| フェーズ7: 品質向上           | 18       | 未着手 |
 
 **並列実行機会**:
+
 - フェーズ1: 8タスク並列実行可能
 - フェーズ2: 11タスク並列実行可能
 - ユーザーストーリー2: 5タスク並列実行可能（Atoms）
