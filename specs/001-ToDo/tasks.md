@@ -1,9 +1,9 @@
 # タスク: 個人用Todoアプリケーション
 
-**入力**: `/specs/001-ToDo/`のデザインドキュメント
-**前提条件**: plan.md（必須）、spec.md（ユーザーストーリー用に必須）、research.md、data-model.md、quickstart.md
-**ブランチ**: `feature/impl-001-ToDo`
-**作成日**: 2025-11-20
+**入力**: `/specs/001-ToDo/`のデザインドキュメント  
+**前提条件**: plan.md（必須）、spec.md（ユーザーストーリー用に必須）、research.md、data-model.md、quickstart.md  
+**ブランチ**: `feature/impl-001-ToDo`  
+**作成日**: 2025-11-20  
 **更新日**: 2025-11-20
 
 **テスト**: このプロジェクトはTDD（テスト駆動開発）を採用しており、すべての実装タスクの前にテストタスクを実施します。106テスト、100%カバレッジを目標としています。
@@ -20,44 +20,47 @@ gantt
     dateFormat YYYY-MM-DD
     axisFormat %m/%d
     excludes weekends 2025-12-27 2025-12-28 2025-12-29 2025-12-30 2025-12-31 2026-01-01 2026-01-02 2026-01-03 2026-01-04
-  
+    
     section Phase 1: セットアップ
-    T001-T011 プロジェクト初期化           :p1_1, 2025-12-15, 1d
-  
+    T001-T011 プロジェクト初期化           :done, p1, 2025-12-15, 1d
+    
     section Phase 2: 基盤
-    T012-T025 コアデータ型定義             :p2_1, after p1_1, 2d
-  
+    T012-T025 コアデータ型定義             :done, p2, after p1, 2d
+    
     section Phase 3: US1 開発環境
-    T026-T030 ワンコマンド起動実装         :p3_1, after p2_1, 1d
-  
+    T026-T030 ワンコマンド起動実装         :done, p3, after p2, 1d
+    
     section Phase 4: US2 ページ管理
-    T031-T048 個人ページ作成・管理         :p4_1, after p3_1, 3d
-  
+    T031-T048 個人ページ作成・管理         :done, p4, after p3, 3d
+    
     section Phase 5: US3 タスクCRUD
-    T049-T070 タスク操作とフィルタリング   :p5_1, after p4_1, 4d
-  
+    T049-T070 タスク操作とフィルタリング   :active, p5, after p4, 4d
+    
     section Phase 6: US4 デプロイ
-    T071-T082 GitHub Pagesデプロイ         :p6_1, after p5_1, 2d
-  
+    T071-T082 GitHub Pagesデプロイ         :p6, after p5, 2d
+    
     section Phase 7: 品質向上
-    T083-T100 ドキュメント・最終検証       :p7_1, after p6_1, 3d
+    T083-T100 ドキュメント・最終検証       :p7, after p6, 3d
 ```
 
 **スケジュール説明**:
-
 - 開始日: 2025年12月15日（月）
-- 土日年末年始: 自動除外（excludes weekends）
-- 総作業日数: 15営業日
+- 土日: 自動除外（excludes weekends）
+- 年末年始休暇: 2025年12月27日～2026年1月4日（9日間）
 
 **フェーズ別所要日数**:
-
-1. Phase 1（セットアップ）: 1日
-2. Phase 2（基盤）: 2日
-3. Phase 3（US1）: 1日
-4. Phase 4（US2）: 3日
-5. Phase 5（US3）: 4日
+1. Phase 1（セットアップ）: 1日 - 完了
+2. Phase 2（基盤）: 2日 - 完了
+3. Phase 3（US1）: 1日 - 完了
+4. Phase 4（US2）: 3日 - 完了
+5. Phase 5（US3）: 4日 - 進行中
 6. Phase 6（US4）: 2日
 7. Phase 7（品質向上）: 3日
+
+**相対日付方式**:
+- 各フェーズは `after p<N>` で前フェーズ完了後に開始
+- 開始日を変更する場合は、Phase 1の日付のみ変更すれば全体が自動調整
+- 年末年始休暇は自動的に除外される
 
 ---
 
