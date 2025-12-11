@@ -1,101 +1,101 @@
 ---
 
-description: "機能実装のためのタスクリストテンプレート"
+description: "Task list template for feature implementation"
 ---
 
-# タスク: [FEATURE NAME]
+# Tasks: [FEATURE NAME]
 
-**入力**: `/specs/[###-feature-name]/`のデザインドキュメント
-**前提条件**: plan.md（必須）、spec.md（ユーザーストーリー用に必須）、research.md、data-model.md、contracts/
+**Input**: Design documents from `/specs/[###-feature-name]/`
+**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**テスト**: 以下の例にはテストタスクが含まれています。テストはオプションです - 機能仕様書で明示的に要求された場合のみ含めてください。
+**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
-**構成**: タスクはユーザーストーリーごとにグループ化され、各ストーリーの独立した実装とテストを可能にします。
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
-## 形式: `[ID] [P?] [Story] 説明`
+## Format: `[ID] [P?] [Story] Description`
 
-- **[P]**: 並列実行可能（異なるファイル、依存関係なし）
-- **[Story]**: このタスクが属するユーザーストーリー（例: US1、US2、US3）
-- 説明に正確なファイルパスを含める
+- **[P]**: Can run in parallel (different files, no dependencies)
+- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
+- Include exact file paths in descriptions
 
-## パス規約
+## Path Conventions
 
-- **単一プロジェクト**: リポジトリルートに`src/`、`tests/`
-- **Webアプリ**: `backend/src/`、`frontend/src/`
-- **モバイル**: `api/src/`、`ios/src/`または`android/src/`
-- 以下に示すパスは単一プロジェクトを前提 - plan.mdの構造に基づいて調整
+- **Single project**: `src/`, `tests/` at repository root
+- **Web app**: `backend/src/`, `frontend/src/`
+- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
+- Paths shown below assume single project - adjust based on plan.md structure
 
 <!-- 
   ============================================================================
-  重要: 以下のタスクは説明目的のサンプルタスクです。
+  IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
   
-  /speckit.tasksコマンドは、以下に基づいて実際のタスクに置き換える必要があります:
-  - spec.mdからのユーザーストーリー（優先度P1、P2、P3...付き）
-  - plan.mdからの機能要件
-  - data-model.mdからのエンティティ
-  - contracts/からのエンドポイント
+  The /speckit.tasks command MUST replace these with actual tasks based on:
+  - User stories from spec.md (with their priorities P1, P2, P3...)
+  - Feature requirements from plan.md
+  - Entities from data-model.md
+  - Endpoints from contracts/
   
-  タスクは、各ストーリーが以下を可能にするようにユーザーストーリーごとに整理される必要があります:
-  - 独立して実装可能
-  - 独立してテスト可能
-  - MVPインクリメントとして提供可能
+  Tasks MUST be organized by user story so each story can be:
+  - Implemented independently
+  - Tested independently
+  - Delivered as an MVP increment
   
-  生成されたtasks.mdファイルでは、これらのサンプルタスクを保持しないでください。
+  DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
 -->
 
-## フェーズ1: セットアップ（共有インフラストラクチャ）
+## Phase 1: Setup (Shared Infrastructure)
 
-**目的**: プロジェクトの初期化と基本構造
+**Purpose**: Project initialization and basic structure
 
-- [ ] T001 実装計画に従ってプロジェクト構造を作成
-- [ ] T002 [framework]依存関係を使用して[language]プロジェクトを初期化
-- [ ] T003 [P] リンターとフォーマッターツールを設定
-
----
-
-## フェーズ2: 基盤（ブロッキング前提条件）
-
-**目的**: すべてのユーザーストーリーを実装する前に完了しなければならないコアインフラストラクチャ
-
-**⚠️ 重要**: このフェーズが完了するまで、ユーザーストーリーの作業を開始できません
-
-基盤タスクの例（プロジェクトに基づいて調整）:
-
-- [ ] T004 データベーススキーマとマイグレーションフレームワークをセットアップ
-- [ ] T005 [P] 認証/認可フレームワークを実装
-- [ ] T006 [P] APIルーティングとミドルウェア構造をセットアップ
-- [ ] T007 すべてのストーリーが依存する基本モデル/エンティティを作成
-- [ ] T008 エラーハンドリングとロギングインフラストラクチャを設定
-- [ ] T009 環境設定管理をセットアップ
-
-**チェックポイント**: 基盤が準備完了 - ユーザーストーリーの実装を並列で開始可能
+- [ ] T001 Create project structure per implementation plan
+- [ ] T002 Initialize [language] project with [framework] dependencies
+- [ ] T003 [P] Configure linting and formatting tools
 
 ---
 
-## フェーズ3: ユーザーストーリー1 - [タイトル] (優先度: P1) 🎯 MVP
+## Phase 2: Foundational (Blocking Prerequisites)
 
-**目標**: [このストーリーが提供するものの簡潔な説明]
+**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-**独立テスト**: [このストーリーが単独で機能することを検証する方法]
+**⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-### ユーザーストーリー1のテスト（オプション - テストが要求された場合のみ） ⚠️
+Examples of foundational tasks (adjust based on your project):
 
-> **注記: これらのテストを最初に記述し、実装前に失敗することを確認してください**
+- [ ] T004 Setup database schema and migrations framework
+- [ ] T005 [P] Implement authentication/authorization framework
+- [ ] T006 [P] Setup API routing and middleware structure
+- [ ] T007 Create base models/entities that all stories depend on
+- [ ] T008 Configure error handling and logging infrastructure
+- [ ] T009 Setup environment configuration management
 
-- [ ] T010 [P] [US1] tests/contract/test_[name].pyに[endpoint]のコントラクトテスト
-- [ ] T011 [P] [US1] tests/integration/test_[name].pyに[user journey]の統合テスト
+**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
-### ユーザーストーリー1の実装
+---
 
-- [ ] T012 [P] [US1] src/models/[entity1].pyに[Entity1]モデルを作成
-- [ ] T013 [P] [US1] src/models/[entity2].pyに[Entity2]モデルを作成
-- [ ] T014 [US1] src/services/[service].pyに[Service]を実装（T012、T013に依存）
-- [ ] T015 [US1] src/[location]/[file].pyに[endpoint/feature]を実装
-- [ ] T016 [US1] バリデーションとエラーハンドリングを追加
-- [ ] T017 [US1] ユーザーストーリー1の操作用ロギングを追加
+## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
 
-**チェックポイント**: この時点で、ユーザーストーリー1は完全に機能し、独立してテスト可能であるべき
+**Goal**: [Brief description of what this story delivers]
+
+**Independent Test**: [How to verify this story works on its own]
+
+### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
+
+> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
+
+- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+
+### Implementation for User Story 1
+
+- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
+- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
+- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
+- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T016 [US1] Add validation and error handling
+- [ ] T017 [US1] Add logging for user story 1 operations
+
+**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
 ---
 
