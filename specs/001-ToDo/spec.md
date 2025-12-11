@@ -173,7 +173,7 @@ flowchart LR
     G --> I[ビルド & デプロイ]
     H --> I
     I --> J[GitHub Pages更新]
-    J --> K[公開URL: https://j1921604.github.io/todo-app/]
+    J --> K[公開URL: https://j1921604.github.io/ToDo/]
 ```
 
 ---

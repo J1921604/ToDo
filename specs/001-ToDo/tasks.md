@@ -16,37 +16,69 @@
 
 ```mermaid
 gantt
-    title 実装スケジュール（2025年12月15日開始）
+    title 実装スケジュール（任意の開始日に設定可能）
     dateFormat YYYY-MM-DD
     axisFormat %m/%d
     excludes weekends 2025-12-27 2025-12-28 2025-12-29 2025-12-30 2025-12-31 2026-01-01 2026-01-02 2026-01-03 2026-01-04
     
     section Phase 1: セットアップ
-    T001-T011 プロジェクト初期化           :done, p1, 2025-12-15, 1d
+    T001-T002 プロジェクト構造確認         :done, p1_1, 2025-12-15, 1d
+    T003-T005 設定ファイル検証             :done, p1_2, after p1_1, 1d
+    T006-T010 ディレクトリ構造確認         :done, p1_3, after p1_2, 1d
+    T011 テストセットアップ確認            :done, p1_4, after p1_3, 1d
     
     section Phase 2: 基盤
-    T012-T025 コアデータ型定義             :done, p2, after p1, 2d
+    T012-T016 型定義実装                   :done, p2_1, after p1_4, 1d
+    T017-T018 ユーティリティ実装           :done, p2_2, after p2_1, 1d
+    T019 ユーザーページ設定                :done, p2_3, after p2_2, 1d
+    T020-T021 グローバルスタイル定義       :done, p2_4, after p2_3, 1d
+    T022-T025 基盤テスト実装               :done, p2_5, after p2_4, 1d
     
     section Phase 3: US1 開発環境
-    T026-T030 ワンコマンド起動実装         :done, p3, after p2, 1d
+    T026-T027 開発環境テスト作成           :done, p3_1, after p2_5, 1d
+    T028-T030 ワンコマンド起動実装         :done, p3_2, after p3_1, 1d
     
     section Phase 4: US2 ページ管理
-    T031-T048 個人ページ作成・管理         :done, p4, after p3, 3d
+    T031-T032 ページ管理テスト作成         :done, p4_1, after p3_2, 1d
+    T033-T037 Atomsコンポーネント実装      :done, p4_2, after p4_1, 1d
+    T038-T039 Atomsテスト実装              :done, p4_3, after p4_2, 1d
+    T040 Sidebar実装                       :done, p4_4, after p4_3, 1d
+    T041-T043 ページコンポーネント実装     :done, p4_5, after p4_4, 1d
+    T044-T045 ルーティング設定             :done, p4_6, after p4_5, 1d
+    T046-T048 ページテスト実装             :done, p4_7, after p4_6, 1d
     
     section Phase 5: US3 タスクCRUD
-    T049-T070 タスク操作とフィルタリング   :done, p5, after p4, 4d
+    T049-T054 タスク統合テスト作成         :done, p5_1, after p4_7, 1d
+    T055-T057 Moleculesコンポーネント実装  :done, p5_2, after p5_1, 1d
+    T058-T060 Moleculesテスト実装          :done, p5_3, after p5_2, 1d
+    T061-T062 Organismsコンポーネント実装  :done, p5_4, after p5_3, 1d
+    T063-T064 Organismsテスト実装          :done, p5_5, after p5_4, 1d
+    T065-T067 Todoページ統合               :done, p5_6, after p5_5, 1d
+    T068-T070 パフォーマンス最適化         :done, p5_7, after p5_6, 1d
     
     section Phase 6: US4 デプロイ
-    T071-T082 GitHub Pagesデプロイ         :done, p6, after p5, 2d
+    T071-T073 ビルド設定確認               :done, p6_1, after p5_7, 1d
+    T074-T075 GitHub Actions設定           :done, p6_2, after p6_1, 1d
+    T076-T079 ローカルビルド検証           :done, p6_3, after p6_2, 1d
+    T080-T082 本番デプロイ・検証           :done, p6_4, after p6_3, 1d
     
     section Phase 7: 品質向上
-    T083-T100 ドキュメント・最終検証       :done, p7, after p6, 3d
+    T083-T084 ドキュメント更新             :done, p7_1, after p6_4, 1d
+    T085-T087 コード品質向上               :done, p7_2, after p7_1, 1d
+    T088-T090 最適化作業                   :active, p7_3, after p7_2, 1d
+    T091-T092 セキュリティ検証             :done, p7_4, after p7_3, 1d
+    T093-T094 テストカバレッジ確認         :done, p7_5, after p7_4, 1d
+    T095-T100 最終検証                     :done, p7_6, after p7_5, 2d
 ```
 
 **スケジュール説明**:
-- 開始日: 2025年12月15日（月）
-- 土日: 自動除外（excludes weekends）
-- 年末年始休暇: 2025年12月27日～2026年1月4日（9日間）
+- **開始日**: 2025年12月15日（月）- 任意の日付に変更可能
+- **土日除外**: `excludes weekends`で自動除外
+- **年末年始休暇**: 2025年12月27日～2026年1月4日（9日間）を明示的に除外
+- **相対日付方式**: `after p<N>`を使用し、開始日変更で全体が自動調整
+- **細分化レベル**: 各フェーズを4-7サブタスクに細分化（合計38サブタスク）
+- **依存関係**: 前のサブタスク完了後に次のサブタスクが開始
+- **進捗表示**: `done`（完了）、`active`（進行中）、指定なし（未着手）
 
 **フェーズ別所要日数**:
 1. Phase 1（セットアップ）: 1日 - 完了
