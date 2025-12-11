@@ -98,6 +98,68 @@ Todo App は、React + TypeScript で構築されたモダンなタスク管理�
 
 ---
 
+## 🏗️ アーキテクチャ
+
+### システム構成図
+
+```mermaid
+flowchart TB
+    subgraph Client["ブラウザ"]
+        UI[React UI]
+        Router[React Router]
+        Storage[LocalStorage]
+    end
+    
+    subgraph Build["開発環境"]
+        Vite[Vite Dev Server]
+        TS[TypeScript]
+        Test[Vitest]
+    end
+    
+    subgraph Deploy["デプロイ"]
+        GHA[GitHub Actions]
+        Pages[GitHub Pages]
+    end
+    
+    UI --> Router
+    Router --> Storage
+    Vite --> UI
+    TS --> UI
+    Test --> UI
+    GHA --> Pages
+    Pages --> Client
+    
+    style UI fill:#61DAFB,color:#000
+    style Router fill:#CA4245,color:#fff
+    style Storage fill:#f3e1ff
+    style Vite fill:#646CFF,color:#fff
+    style TS fill:#3178C6,color:#fff
+    style Test fill:#729B1B,color:#fff
+    style GHA fill:#2088FF,color:#fff
+    style Pages fill:#222,color:#fff
+```
+
+### データフロー
+
+```mermaid
+sequenceDiagram
+    participant User as ユーザー
+    participant UI as React UI
+    participant State as State管理
+    participant LS as LocalStorage
+    
+    User->>UI: タスク追加
+    UI->>State: updateTodos()
+    State->>LS: saveTodos()
+    LS-->>State: 保存完了
+    State-->>UI: 再レンダリング
+    UI-->>User: 画面更新
+    
+    Note over User,LS: データ永続化により<br/>リロード後も保持
+```
+
+---
+
 ## クイックスタート
 
 ### ワンコマンド起動（Windows）

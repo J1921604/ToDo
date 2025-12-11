@@ -71,6 +71,25 @@ flowchart TB
 
 ### デプロイフロー概要
 
+```mermaid
+flowchart LR
+    A[git push] --> B[GitHub Actions起動]
+    B --> C{ビルド成功?}
+    C -->|Yes| D[dist/生成]
+    C -->|No| E[エラー通知]
+    D --> F[GitHub Pages]
+    F --> G[CDN配信]
+    G --> H[本番公開]
+    E --> I[ログ確認]
+    
+    style A fill:#e3f2fd
+    style C fill:#fff3e0
+    style D fill:#c8e6c9
+    style F fill:#fff9c4
+    style H fill:#4caf50,color:#fff
+    style E fill:#f44336,color:#fff
+```
+
 | ステップ        | 実行場所     | 処理内容                                   | 所要時間        |
 | --------------- | ------------ | ------------------------------------------ | --------------- |
 | 1. コミット     | ローカル     | `git push origin main`                   | -               |
