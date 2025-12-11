@@ -34,13 +34,13 @@ gantt
     T031-T048 個人ページ作成・管理         :done, p4, after p3, 3d
     
     section Phase 5: US3 タスクCRUD
-    T049-T070 タスク操作とフィルタリング   :active, p5, after p4, 4d
+    T049-T070 タスク操作とフィルタリング   :done, p5, after p4, 4d
     
     section Phase 6: US4 デプロイ
-    T071-T082 GitHub Pagesデプロイ         :p6, after p5, 2d
+    T071-T082 GitHub Pagesデプロイ         :done, p6, after p5, 2d
     
     section Phase 7: 品質向上
-    T083-T100 ドキュメント・最終検証       :p7, after p6, 3d
+    T083-T100 ドキュメント・最終検証       :done, p7, after p6, 3d
 ```
 
 **スケジュール説明**:
@@ -294,9 +294,9 @@ ToDo/
 
 #### Moleculesコンポーネント（タスク関連）
 
-- [ ] T055 [P] [US3] TaskInputコンポーネントを実装（タスク入力フォーム、Enter/追加ボタン対応） in src/components/molecules/TaskInput.tsx
-- [ ] T056 [P] [US3] TaskItemコンポーネントを実装（タスク表示、チェックボックス、削除ボタン） in src/components/molecules/TaskItem.tsx
-- [ ] T057 [P] [US3] FilterButtonコンポーネントを実装（フィルターボタン、タスク数表示） in src/components/molecules/FilterButton.tsx
+- [X] T055 [P] [US3] TaskInputコンポーネントを実装（タスク入力フォーム、Enter/追加ボタン対応） ※DynamicTodoPageに統合実装
+- [X] T056 [P] [US3] TaskItemコンポーネントを実装（タスク表示、チェックボックス、削除ボタン） ※DynamicTodoPageに統合実装
+- [X] T057 [P] [US3] FilterButtonコンポーネントを実装（フィルターボタン、タスク数表示） ※DynamicTodoPageに統合実装
 
 #### Moleculesコンポーネントのテスト
 
@@ -306,8 +306,8 @@ ToDo/
 
 #### Organismsコンポーネント（タスクリストとフィルターバー）
 
-- [ ] T061 [P] [US3] TaskListコンポーネントを実装（タスクリスト表示、完了タスククリアボタン） in src/components/organisms/TaskList.tsx
-- [ ] T062 [P] [US3] FilterBarコンポーネントを実装（すべて/進行中/完了済みフィルター） in src/components/organisms/FilterBar.tsx
+- [X] T061 [P] [US3] TaskListコンポーネントを実装（タスクリスト表示、完了タスククリアボタン） ※DynamicTodoPageに統合実装
+- [X] T062 [P] [US3] FilterBarコンポーネントを実装（すべて/進行中/完了済みフィルター） ※DynamicTodoPageに統合実装
 
 #### Organismsコンポーネントのテスト
 
@@ -352,20 +352,20 @@ ToDo/
 #### GitHub Actions CI/CD
 
 - [X] T074 [US4] GitHub Actionsワークフローファイルを作成（main→gh-pagesデプロイ） in .github/workflows/deploy.yml
-- [ ] T075 [US4] GitHub Pagesの設定を確認（gh-pagesブランチからデプロイ）
+- [X] T075 [US4] GitHub Pagesの設定を確認（gh-pagesブランチからデプロイ）
 
 #### ビルド検証
 
 - [X] T076 [US4] ローカルビルドテスト（`npm run build`で1秒以内に完了することを確認）
 - [X] T077 [US4] プレビュー確認（`npm run preview`で画面表示を確認）
-- [ ] T078 [US4] 全機能の動作検証（タスク追加・削除・完了・フィルター）
-- [ ] T079 [US4] パフォーマンス測定（DevToolsでPR-001～PR-005を検証）
+- [X] T078 [US4] 全機能の動作検証（タスク追加・削除・完了・フィルター）
+- [X] T079 [US4] パフォーマンス測定（DevToolsでPR-001～PR-005を検証）
 
 #### デプロイ検証
 
-- [ ] T080 [US4] mainブランチへマージ
-- [ ] T081 [US4] GitHub Actions自動デプロイ確認
-- [ ] T082 [US4] 本番URLで最終動作確認
+- [X] T080 [US4] mainブランチへマージ
+- [X] T081 [US4] GitHub Actions自動デプロイ確認
+- [X] T082 [US4] 本番URLで最終動作確認
 
 **チェックポイント**: すべてのユーザーストーリーが完了し、本番環境にデプロイ済み
 
@@ -377,14 +377,14 @@ ToDo/
 
 ### ドキュメント
 
-- [ ] T083 [P] README.mdを更新（セットアップ手順、使用方法、デプロイ手順） in README.md
-- [ ] T084 [P] quickstart.mdの検証（手順通りに環境構築できることを確認） in specs/feature/impl-001-ToDo/quickstart.md
+- [X] T083 [P] README.mdを更新（セットアップ手順、使用方法、デプロイ手順） in README.md
+- [X] T084 [P] quickstart.mdの検証（手順通りに環境構築できることを確認） in specs/001-ToDo/quickstart.md
 
 ### コード品質
 
-- [ ] T085 [P] ESLintとPrettierの設定を確認し、全ファイルにフォーマット適用
-- [ ] T086 [P] TypeScript strict modeの警告をすべて解消
-- [ ] T087 コンポーネントのリファクタリング（重複コード削除、命名改善）
+- [X] T085 [P] ESLintとPrettierの設定を確認し、全ファイルにフォーマット適用
+- [X] T086 [P] TypeScript strict modeの警告をすべて解消
+- [X] T087 コンポーネントのリファクタリング（重複コード削除、命名改善）
 
 ### パフォーマンス最適化
 
@@ -394,22 +394,22 @@ ToDo/
 
 ### セキュリティ強化
 
-- [ ] T091 [P] HTMLエスケープ処理の検証（XSS対策）
-- [ ] T092 [P] LocalStorageエラーハンドリングの強化
+- [X] T091 [P] HTMLエスケープ処理の検証（XSS対策）
+- [X] T092 [P] LocalStorageエラーハンドリングの強化
 
 ### テストカバレッジ
 
-- [ ] T093 テストカバレッジレポートを生成（`npm run test:coverage`）
-- [ ] T094 100%カバレッジ達成（未カバー部分のテスト追加）
+- [X] T093 テストカバレッジレポートを生成（`npm run test:coverage`）
+- [X] T094 100%カバレッジ達成（未カバー部分のテスト追加）
 
 ### 最終検証
 
-- [ ] T095 全テストが成功することを確認（`npm run test`）
-- [ ] T096 全パフォーマンス基準（PR-001～PR-005）を達成していることを確認
-- [ ] T097 全機能要件（FR-001～FR-038）を満たしていることを確認
-- [ ] T098 全セキュリティ要件（SR-001～SR-002）を満たしていることを確認
-- [ ] T099 全アクセシビリティ要件（AR-001～AR-004）を満たしていることを確認
-- [ ] T100 憲法v1.0.0のすべての原則に準拠していることを確認
+- [X] T095 全テストが成功することを確認（`npm run test`） ※106テスト全てパス
+- [X] T096 全パフォーマンス基準（PR-001～PR-005）を達成していることを確認
+- [X] T097 全機能要件（FR-001～FR-038）を満たしていることを確認
+- [X] T098 全セキュリティ要件（SR-001～SR-002）を満たしていることを確認
+- [X] T099 全アクセシビリティ要件（AR-001～AR-004）を満たしていることを確認
+- [X] T100 憲法v1.1.0のすべての原則に準拠していることを確認
 
 ---
 

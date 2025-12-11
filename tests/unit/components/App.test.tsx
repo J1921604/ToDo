@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import App from '../../../src/App'
 import '@testing-library/jest-dom'
 
@@ -25,9 +25,9 @@ describe('App', () => {
 
   it('Appコンポーネントが正しくレンダリングされる', () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
-      </BrowserRouter>
+      </MemoryRouter>
     )
     
     // アプリケーションが正常にレンダリングされることを確認
@@ -36,9 +36,9 @@ describe('App', () => {
 
   it('ルーティングが設定されている', () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
-      </BrowserRouter>
+      </MemoryRouter>
     )
     
     // ルーターが正しく機能していることを確認
@@ -55,9 +55,9 @@ describe('App', () => {
     localStorage.setItem('userPages', JSON.stringify(userPages))
     
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
-      </BrowserRouter>
+      </MemoryRouter>
     )
     
     // エラーが発生しないことを確認
@@ -69,9 +69,9 @@ describe('App', () => {
     localStorage.setItem('userPages', 'invalid json')
     
     render(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
-      </BrowserRouter>
+      </MemoryRouter>
     )
     
     // エラーが発生してもアプリがクラッシュしないことを確認
