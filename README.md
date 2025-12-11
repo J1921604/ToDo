@@ -527,8 +527,12 @@ SOFTWARE.
 
 ## 関連ドキュメント
 
+- **プロジェクト憲法**: [.specify/memory/constitution.md](https://github.com/J1921604/ToDo/blob/main/.specify/memory/constitution.md)
 - **完全仕様書**: [docs/完全仕様書.md](https://github.com/J1921604/ToDo/blob/main/docs/完全仕様書.md)
 - **デプロイガイド**: [docs/DEPLOY_GUIDE.md](https://github.com/J1921604/ToDo/blob/main/docs/DEPLOY_GUIDE.md)
+- **機能仕様書**: [specs/001-ToDo/spec.md](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/spec.md)
+- **実装計画**: [specs/001-ToDo/plan.md](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/plan.md)
+- **タスク一覧**: [specs/001-ToDo/tasks.md](https://github.com/J1921604/ToDo/blob/main/specs/001-ToDo/tasks.md)
 - **基本ガイド**: [AI_input/BASIC_TODO_GUIDE_JP.md](https://github.com/J1921604/ToDo/blob/main/AI_input/BASIC_TODO_GUIDE_JP.md)
 
 ---

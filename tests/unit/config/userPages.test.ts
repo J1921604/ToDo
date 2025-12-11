@@ -58,20 +58,20 @@ describe('userPages Configuration', () => {
     })
 
     it('日本語のページ名を追加できる', () => {
-      const result = addUserPage('浜崎秀寿', '👤')
+      const result = addUserPage('山田太郎', '👤')
       expect(result).toBe(true)
       
       const pages = getUserPages()
-      const addedPage = pages.find(p => p.name === '浜崎秀寿')
+      const addedPage = pages.find(p => p.name === '山田太郎')
       expect(addedPage).toBeTruthy()
     })
 
     it('スペースを含むページ名を追加できる', () => {
-      const result = addUserPage('浜崎 秀寿', '👤')
+      const result = addUserPage('佐藤 花子', '👤')
       expect(result).toBe(true)
       
       const pages = getUserPages()
-      const addedPage = pages.find(p => p.name === '浜崎 秀寿')
+      const addedPage = pages.find(p => p.name === '佐藤 花子')
       expect(addedPage).toBeTruthy()
     })
 
@@ -136,16 +136,16 @@ describe('userPages Configuration', () => {
 
     it('スペースを含むページ名のタスクデータも正しく削除される', () => {
       // ページとタスクデータを追加
-      addUserPage('浜崎 秀寿', '👤')
-      localStorage.setItem('浜崎-秀寿-todos', JSON.stringify([
+      addUserPage('鈴木 一郎', '👤')
+      localStorage.setItem('鈴木-一郎-todos', JSON.stringify([
         { id: 1, text: 'テストタスク', completed: false }
       ]))
       
       // ページを削除
-      removeUserPage('浜崎 秀寿')
+      removeUserPage('鈴木 一郎')
       
       // タスクデータも削除されていることを確認
-      const taskData = localStorage.getItem('浜崎-秀寿-todos')
+      const taskData = localStorage.getItem('鈴木-一郎-todos')
       expect(taskData).toBeNull()
     })
   })

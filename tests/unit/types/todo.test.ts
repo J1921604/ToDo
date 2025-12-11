@@ -126,9 +126,9 @@ describe('generateStorageKey', () => {
   test('無効な文字を含む開発者名をサニタイズ', () => {
     // 日本語文字をそのまま保持
     expect(generateStorageKey('田中')).toBe('田中-todos')
-    expect(generateStorageKey('浜崎秀寿')).toBe('浜崎秀寿-todos')
+    expect(generateStorageKey('山田太郎')).toBe('山田太郎-todos')
     // スペースはハイフンに変換
-    expect(generateStorageKey('浜崎 秀寿')).toBe('浜崎-秀寿-todos')
+    expect(generateStorageKey('田中 太郎')).toBe('田中-太郎-todos')
     expect(generateStorageKey('Name With Spaces')).toBe('Name-With-Spaces-todos')
     expect(generateStorageKey('user@example')).toBe('user@example-todos')
     expect(generateStorageKey('Test@User#123$')).toBe('Test@User#123$-todos')
