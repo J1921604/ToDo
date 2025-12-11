@@ -21,6 +21,24 @@
 **根拠**:
 テスト駆動開発は、コードの品質を保証し、仕様との整合性を確保する最も効果的な手段である。事前にテストを書くことで、要件を明確化し、実装の方向性を定め、リグレッションを防止する。106テスト・100%カバレッジを達成することで、信頼性の高いアプリケーションを構築する。
 
+#### TDDサイクル
+
+```mermaid
+flowchart LR
+    Red[🔴 Red<br/>失敗するテスト作成] --> Green[🟢 Green<br/>最小限の実装]
+    Green --> Refactor[🔵 Refactor<br/>コード改善]
+    Refactor --> Red
+    
+    style Red fill:#ffcdd2,color:#000
+    style Green fill:#c8e6c9,color:#000
+    style Refactor fill:#bbdefb,color:#000
+```
+
+**Red-Green-Refactor原則**:
+1. **Red**: 失敗するテストを書く（要件の明確化）
+2. **Green**: テストをパスする最小限のコードを書く（実装）
+3. **Refactor**: コードを改善する（品質向上）
+
 ### II. セキュリティファースト
 
 **原則**:

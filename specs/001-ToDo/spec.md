@@ -188,6 +188,39 @@ flowchart LR
 - **長いタスク名**: 非常に長いタスク名を入力した場合、UIが適切に表示されること
 - **特殊文字**: タスク名やページ名に特殊文字（絵文字、HTML特殊文字等）を含めても正常に動作すること
 
+### ユーザーストーリー関連図
+
+```mermaid
+graph TB
+    subgraph "P1: 必須機能"
+        US1[US1: 開発環境起動]
+        US2[US2: ページ管理]
+        US3[US3: タスクCRUD]
+    end
+    
+    subgraph "P2: デプロイ"
+        US4[US4: GitHub Pages]
+    end
+    
+    US1 -.開発体験.-> US2
+    US1 -.開発体験.-> US3
+    US2 -->|ページ作成| US3
+    US3 -->|タスク管理| US2
+    US1 --> US4
+    US2 --> US4
+    US3 --> US4
+    
+    style US1 fill:#e3f2fd
+    style US2 fill:#fff3e0
+    style US3 fill:#f3e1ff
+    style US4 fill:#c8e6c9
+```
+
+**ストーリー依存関係**:
+- US1は独立（開発環境セットアップ）
+- US2とUS3は相互依存（ページとタスクの関係）
+- US4はUS1-3完了後にデプロイ
+
 ## 要件 *(必須)*
 
 ### 機能要件
